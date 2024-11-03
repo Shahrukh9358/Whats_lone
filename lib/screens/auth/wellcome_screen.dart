@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_common/get_reset.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:ui_practice/screens/auth/login_screen.dart';
 import 'package:ui_practice/utils/constants.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -71,28 +70,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 230.h,),
-              Container(
-                height: 40.h,
-                width: 330.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.green,
-                ),
-                child: TextButton(
-                  onPressed: () {
-                      Get.toNamed("/login");
-                    },
-                  child: Text(
-                    "Agree and continue",
-                    style: TextStyle(color: Colors.white, fontSize: 14.h),
-                  ),
-                ),
-              ),
+
             ],
           ),
         ),
       ),
+      floatingActionButton: UIHelper.CustomButton(callback: (){
+        Get.toNamed("/login");
+      }, buttonName: "Next"),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

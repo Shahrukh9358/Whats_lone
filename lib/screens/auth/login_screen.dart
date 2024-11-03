@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:ui_practice/utils/constants.dart';
 
@@ -58,49 +59,55 @@ class _LoginScreenState extends State<LoginScreen> {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 80.h),
-                DropdownButtonFormField<String>(
-                  items: countryList.map((String country) {
-                    return DropdownMenuItem<String>(
-                      value: country,
-                      child: Text(country),
-                    );
-                  }).toList(),
-                  onChanged: (newValue) {
-                    setState(() {
-                      selectedCountry = newValue!;
-                    });
-                  },
-                  value: selectedCountry,
-                  decoration: const InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 320.h,),
-                Container(
-                  height: 40.h,
-                  width: 330.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.green,
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      Get.toNamed("/verify_number");
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: DropdownButtonFormField<String>(
+                    items: countryList.map((String country) {
+                      return DropdownMenuItem<String>(
+                        value: country,
+                        child: Text(country),
+                      );
+                    }).toList(),
+                    onChanged: (newValue) {
+                      setState(() {
+                        selectedCountry = newValue!;
+                      });
                     },
-                    child: Text(
-                      "Next",
-                      style: TextStyle(color: Colors.white, fontSize: 14.h),
+                    value: selectedCountry,
+                    decoration: const InputDecoration(
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                      ),
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "+91 Enter your mobile number",
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green)
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                      )
+                    ),
+                  ),
+                )
               ],
             ),
           ),
+          floatingActionButton: UIHelper.CustomButton(callback: (){
+            Get.toNamed('/verify_number',);
+          }, buttonName: "Next"),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         );
       },
     );

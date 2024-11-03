@@ -77,27 +77,14 @@ class _VerifyNumberState extends State<VerifyNumber> {
                 ),
                 SizedBox(height: 50.h,),
                 Text("Didn’t receive code",style: TextStyle(color: Colors.green,fontSize: 14.h),),
-                SizedBox(height: 300.h,),
-                Container(
-                  height: 40.h,
-                  width: 330.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.green,
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                    Get.toNamed("/profile");
-                    },
-                    child: Text(
-                      "Next",
-                      style: TextStyle(color: Colors.white, fontSize: 14.h),
-                    ),
-                  ),
-                ),
+
               ],
             ),
           ),
+          floatingActionButton: UIHelper.CustomButton(callback: (){
+            Get.toNamed('/profile',);
+          }, buttonName: "Next"),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         );
       },
     );
